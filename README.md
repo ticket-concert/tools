@@ -32,6 +32,9 @@ https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-con
 6. Install Mongosh
 - Download mongoshell binary from this link https://www.mongodb.com/try/download/shell
 - Choose your platform and install it
+7. Install Kafka client
+Downlod from:
+https://kafka.apache.org/downloads
 
 ## Data Preparation
 1. After success install mongosh, insert continent data with this command
@@ -66,4 +69,18 @@ https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-con
 7. Insert database index
 ```bash
 ./mongosh "mongodb://127.0.0.1:27021/admin?replicaSet=dbrs&directConnection=true"  --file /tools/data/index.js
+```
+
+8. Create kafka topic
+```bash
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic concert-send-email-pdf
+```
+```bash
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic concert-send-otp-user-registration
+```
+```bash
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic concert-update-online-bank-ticket
+```
+```bash
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic concert-create-bank-ticket
 ```
